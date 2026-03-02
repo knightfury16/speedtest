@@ -20,10 +20,10 @@ Or, if you prefer the traditional way:
 git clone https://github.com/knightfury16/speedtest.git
 cd speedtest
 
-# Default (Cloudflare Anycast)
+# Default (Cloudflare Anycast). Testing local speed similar to fast.com
 bash ./speedtest.sh
 
-# Global Test (Tele2 Sweden)
+# Global Test (Tele2 Sweden). Testing the long distance hop speed.
 bash ./speedtest.sh global
 
 # Help
