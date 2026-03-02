@@ -20,6 +20,16 @@ fi
 
 hr() { printf '%.0s─' {1..46}; echo; }
 
+# ── Argument Handling & Help ──────────────────────────
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+  echo -e "${BOLD}Usage:${RESET} ./speedtest.sh [option]"
+  echo -e "\n${BOLD}Options:${RESET}"
+  echo -e "  (none)   Default (Cloudflare / httpbin)"
+  echo -e "  global   Tests against Tele2 (Sweden) infrastructure"
+  echo -e "  -h       Show this help message"
+  exit 0
+fi
+
 human_speed() {
   awk -v b="$1" 'BEGIN{
     if      (b >= 1e9) printf "%.2f Gbps", b/1e9
