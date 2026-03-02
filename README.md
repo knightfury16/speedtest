@@ -27,7 +27,7 @@ bash ./speedtest.sh
 bash ./speedtest.sh global
 
 # Help
-./speedtest.sh -h
+bash ./speedtest.sh -h
 
 ```
 
