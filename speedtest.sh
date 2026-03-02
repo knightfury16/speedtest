@@ -37,7 +37,7 @@ fi
 echo -e "\n${YELLOW}▶ Testing download (~10 MB)...${RESET}"
 READ=$(curl -L --max-time 30 -o /dev/null -s \
   -w "%{size_download} %{time_total}" \
-  "http://speedtest.tele2.net/10MB.zip" 2>/dev/null)
+  "https://speed.cloudflare.com/__down?bytes=10000000" 2>/dev/null)
 
 DL_BYTES=$(echo "$READ" | awk '{print $1}')
 DL_TIME=$(echo  "$READ" | awk '{print $2}')
