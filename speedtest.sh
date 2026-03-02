@@ -7,6 +7,17 @@
 GREEN='\033[0;32m'; YELLOW='\033[1;33m'
 CYAN='\033[0;36m'; BOLD='\033[1m'; RESET='\033[0m'
 
+# ── Handle Arguments ──────────────────────────────────
+# Default to Cloudflare
+DL_URL="https://speed.cloudflare.com/__down?bytes=10000000"
+SERVER_NAME="Cloudflare (Anycast)"
+
+# Check if "global" was passed as an argument
+if [[ "$1" == "global" ]]; then
+  DL_URL="http://speedtest.tele2.net/10MB.zip"
+  SERVER_NAME="Tele2 (Sweden)"
+fi
+
 hr() { printf '%.0s─' {1..46}; echo; }
 
 human_speed() {
@@ -34,10 +45,10 @@ else
 fi
 
 # ── Download ─────────────────────────────────────────
-echo -e "\n${YELLOW}▶ Testing download (~10 MB)...${RESET}"
+echo -e "\n${YELLOW}▶ Testing download (~10 MB) from ${SERVER_NAME}.${RESET}"
 READ=$(curl -L --max-time 30 -o /dev/null -s \
   -w "%{size_download} %{time_total}" \
-  "https://speed.cloudflare.com/__down?bytes=10000000" 2>/dev/null)
+  "${DL_URL}" 2>/dev/null)
 
 DL_BYTES=$(echo "$READ" | awk '{print $1}')
 DL_TIME=$(echo  "$READ" | awk '{print $2}')
