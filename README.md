@@ -19,7 +19,15 @@ Or, if you prefer the traditional way:
 ```bash
 git clone https://github.com/knightfury16/speedtest.git
 cd speedtest
+
+# Default (Cloudflare Anycast)
 bash ./speedtest.sh
+
+# Global Test (Tele2 Sweden)
+bash ./speedtest.sh global
+
+# Help
+./speedtest.sh -h
 
 ```
 
